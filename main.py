@@ -13,6 +13,7 @@ class Game:
     def create_menu(self):
         self.menu = Menu( self.create_level)
         self.level.start_sound.stop()
+        self.level.pacman_win_sound.stop()
         self.status = 'menu'
 
     def create_level(self):
@@ -45,4 +46,4 @@ while True:
     game.run()
 
     pg.display.update()
-    clock.tick(30)
+    clock.tick(150)
