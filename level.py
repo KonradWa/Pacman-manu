@@ -63,7 +63,6 @@ class Level:
 
     # Generowanie mapy
     def setup_level(self, layout):
-        self.tile = []
         self.ghost_pos = [0,1,2,3]
 
         for row_index, row in enumerate(layout):
@@ -76,39 +75,31 @@ class Level:
                         player_sprite = Player((x, y))
                         self.player_pos = (x,y)
                         self.player.add(player_sprite)
-                        self.tile.append(player_sprite)
                     if tile_type == "Point":
                         tile = Tile(x, y, tile_type)
                         self.point.add(tile)
-                        self.tile.append(tile)
                     elif tile_type == "Power_up":
                         tile = Tile(x, y, tile_type)
                         self.power_up.add(tile)
-                        self.tile.append(tile)
                     elif tile_type == "Yellow":
                         tile = Clyde(x, y, start_target[0], 2, 2, False, False, 0, self.stop)
                         self.ghost.add(tile)
-                        self.tile.append(tile)
                         self.ghost_pos[0] = (x,y)
                     elif tile_type == "Pink":
                         tile = Pinky(x, y, start_target[1], 2, 2, False, False, 1, self.stop)
                         self.ghost.add(tile)
-                        self.tile.append(tile)
                         self.ghost_pos[1] = (x,y)
                     elif tile_type == "Blue":
                         tile = Inky(x, y, start_target[2], 2, 2, False, False, 2, self.stop)
                         self.ghost.add(tile)
-                        self.tile.append(tile)
                         self.ghost_pos[2] = (x,y)
                     elif tile_type == "Red":
                         tile = Blinky(x, y, start_target[3], 2, 2, False, False, 3, self.stop)
                         self.ghost.add(tile)
-                        self.tile.append(tile)
                         self.ghost_pos[3] = (x,y)
                     elif tile_type == "Stop":
                         tile = Tile(x, y, tile_type)
                         self.stop.add(tile)
-                        self.tile.append(tile)
 
     # Kolizje gracza za ścianą
     def player_wall_collision(self):
